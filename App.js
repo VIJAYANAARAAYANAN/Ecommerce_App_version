@@ -1,20 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import splashscreen from './src/splashscreen';
+import home from './src/home';
+import minimilisthome from './src/minimilisthome';
+import scent from './src/scent'
+import fashion from './src/fashion'
+import beard from './src/beard'
+import shoe from './src/shoe'
 
-export default function App() {
+
+const Stack = createStackNavigator();
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="splashscreen" component={splashscreen} />
+        <Stack.Screen name="home" component={home} />
+        <Stack.Screen name="minimilisthome" component={minimilisthome} />
+        <Stack.Screen name="scent" component={scent} />
+        <Stack.Screen name="fashion" component={fashion} />
+        <Stack.Screen name="beard" component={beard} />
+        <Stack.Screen name="shoe" component={shoe} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
