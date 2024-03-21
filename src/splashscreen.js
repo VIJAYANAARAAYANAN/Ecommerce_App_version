@@ -4,15 +4,17 @@ import { View, Text, StyleSheet } from 'react-native';
 const SplashScreen = ({ navigation }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.navigate('home');
-    }, 1000); // 1 second delay
+      navigation.navigate('login');
+    }, 2000); // 
 
     return () => clearTimeout(timer);
   }, [navigation]);
 
   return (
     <View style={styles.container}>
+    <View style={{borderColor:'white',borderWidth:5}}>
       <Text style={styles.text}>SUGOI</Text>
+    </View> 
     </View>
   );
 };
@@ -28,6 +30,8 @@ const styles = StyleSheet.create({
     fontSize: 60,
     fontWeight: 'bold',
     color: 'white',
+    fontStyle:'italic',
+    padding:20,
   },
 });
 

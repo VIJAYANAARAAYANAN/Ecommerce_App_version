@@ -39,13 +39,13 @@ const Scent = ({ navigation}) => {
         <Text style={styles.headerText}>SUGOI</Text>
         <View style={styles.iconContainer}>
           <Pressable onPress={()=> handleSearchPress()}>
-          <AntDesign name="search1" size={24} color="black" />
+          <AntDesign name="search1" size={24} color="white" />
           </Pressable>
           <Pressable onPress={() => handlePressHeart('banner')}>
-          <AntDesign name="hearto" size={24} color="black" />
+          <AntDesign name="hearto" size={24} color="white" />
           </Pressable>
           <Pressable onPress={() => handlePressCart('banner')}>
-            <Ionicons name="cart-outline" size={24} color="black" />
+            <Ionicons name="cart-outline" size={24} color="white" />
           </Pressable>
         </View>
       </View>
@@ -204,12 +204,15 @@ const styles = StyleSheet.create({
     paddingTop: 8,
     marginTop: 35,
     alignItems: 'center',
+    backgroundColor: 'rgb(9, 72, 95)',
   },
   headerText: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: 'black',
+    color: 'white',
     paddingLeft: 20,
+    paddingVertical:20,
+    fontStyle:'italic',
   },
   iconContainer: {
     flexDirection: 'row',

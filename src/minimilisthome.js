@@ -1,9 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View, Pressable, Image, ScrollView } from 'react-native';
-import { FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
-import { EvilIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+
 
 import minimilistbanner from '../assets/minimilistbanner.png';
 import productImage1 from '../assets/minipro1.png';
@@ -11,25 +12,32 @@ import productImage2 from '../assets/minipro2.png';
 import productImage3 from '../assets/minipro3.png';
 import productImage4 from '../assets/minipro4.png';
 
-const Minimilisthome = ({ navigation }) => {
+const Minimilisthome = () => {
   const handleAddToCart = (productName) => {
     console.log(`Added ${productName} to cart`);
   };
 
+  const handleLikePress = (productName) => {
+    console.log(`Like icon of ${productName} pressed`);
+  };
+
+  //banner functions
   const handlePressImage = (productName) => {
     console.log(`Image of ${productName} pressed`);
   };
 
-  const handlePressHeart = (productName) => {
-    console.log(`Heart icon of ${productName} pressed`);
-  };
-  
-  const handleLikePress =(productName) => {
-    console.log(`Like icon of ${productName} pressed`);
-  }
   const handlePressCart = (productName) => {
-    console.log(`Cart icon of ${productName} pressed`);
+    console.log('Banner Cart icon pressed');
   };
+
+  const handlePressHeart =(productName)=>{
+    console.log('Banner like icon pressed');
+  }
+
+  const handleSearchPress = () => {
+    console.log('Search icon pressed');
+  };
+
 
   return (
     <View style={styles.container}>
@@ -37,13 +45,13 @@ const Minimilisthome = ({ navigation }) => {
         <Text style={styles.headerText}>SUGOI</Text>
         <View style={styles.iconContainer}>
           <Pressable onPress={()=> handleSearchPress()}>
-          <AntDesign name="search1" size={24} color="black" />
+          <AntDesign name="search1" size={24} color="white" />
           </Pressable>
-          <Pressable onPress={() => handlePressHeart('banner')}>
-          <AntDesign name="hearto" size={24} color="black" />
+          <Pressable onPress={() => handlePressHeart()}>
+          <AntDesign name="hearto" size={24} color="white" />
           </Pressable>
-          <Pressable onPress={() => handlePressCart('banner')}>
-            <Ionicons name="cart-outline" size={24} color="black" />
+          <Pressable onPress={() => handlePressCart()}>
+            <Ionicons name="cart-outline" size={24} color="white" />
           </Pressable>
         </View>
       </View>
@@ -52,7 +60,7 @@ const Minimilisthome = ({ navigation }) => {
       </View>
       <View style={{paddingHorizontal:30,paddingTop:27}}>
             <Text style={{fontSize:20,fontWeight:'bold'}}>Minimalist</Text>
-            <Text>6 products</Text>
+            <Text>4 products</Text>
         </View>
       <ScrollView>
       {/* Additional images section */}
@@ -70,10 +78,10 @@ const Minimilisthome = ({ navigation }) => {
                 </Pressable>
                 </View>
                 <View style={styles.addButtonContainer}>
-                <Pressable onPress={()=> handleLikePress('Product 1')}>
+                <Pressable onPress={()=> handleLikePress}>
                   <MaterialCommunityIcons name="heart-plus-outline" size={24} color="black" />
                   </Pressable>
-                  <Pressable style={styles.addButton} onPress={() => handleAddToCart('Product 1')}>
+                  <Pressable style={styles.addButton} onPress={() => handleAddToCart}>
                     <Text style={styles.addButtonText}>Add to Cart</Text>
                   </Pressable>
                 </View>
@@ -92,10 +100,10 @@ const Minimilisthome = ({ navigation }) => {
                 </Pressable>
                 </View>
                 <View style={styles.addButtonContainer}>
-                <Pressable onPress={()=> handleLikePress('Product 2')}>
+                <Pressable onPress={()=> handleLikePress}>
                   <MaterialCommunityIcons name="heart-plus-outline" size={24} color="black" />
                   </Pressable>
-                  <Pressable style={styles.addButton} onPress={() => handleAddToCart('Product 2')}>
+                  <Pressable style={styles.addButton} onPress={() => handleAddToCart}>
                     <Text style={styles.addButtonText}>Add to Cart</Text>
                   </Pressable>
                 </View>
@@ -116,10 +124,10 @@ const Minimilisthome = ({ navigation }) => {
                 </Pressable>
                 </View>
                 <View style={styles.addButtonContainer}>
-                <Pressable onPress={()=> handleLikePress('Product 3')}>
+                <Pressable onPress={()=> handleLikePress}>
                   <MaterialCommunityIcons name="heart-plus-outline" size={24} color="black" />
                   </Pressable>
-                  <Pressable style={styles.addButton} onPress={() => handleAddToCart('Product 3')}>
+                  <Pressable style={styles.addButton} onPress={() => handleAddToCart}>
                     <Text style={styles.addButtonText}>Add to Cart</Text>
                   </Pressable>
                 </View>
@@ -137,10 +145,10 @@ const Minimilisthome = ({ navigation }) => {
                 </Pressable>
                 </View>
                 <View style={styles.addButtonContainer}>
-                <Pressable onPress={()=> handleLikePress('Product 4')}>
+                <Pressable onPress={()=> handleLikePress}>
                   <MaterialCommunityIcons name="heart-plus-outline" size={24} color="black" />
                   </Pressable>
-                  <Pressable style={styles.addButton} onPress={() => handleAddToCart('Product 4')}>
+                  <Pressable style={styles.addButton} onPress={() => handleAddToCart}>
                     <Text style={styles.addButtonText}>Add to Cart</Text>
                   </Pressable>
                 </View>
@@ -164,17 +172,21 @@ const styles = StyleSheet.create({
     paddingTop: 8,
     marginTop: 35,
     alignItems: 'center',
+    backgroundColor: 'rgb(9, 72, 95)',
+    
   },
   headerText: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: 'black',
+    color: 'white',
     paddingLeft: 20,
+    paddingVertical:20,
+    fontStyle:'italic',
   },
   iconContainer: {
     flexDirection: 'row',
     paddingRight: 10,
-    gap: 15,
+    gap: 25,
   },
   backgroundImageContainer: {
     marginTop: 15,

@@ -6,14 +6,14 @@ import { AntDesign } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
 
 import minimilistbanner from '../assets/minimilistbanner.png';
-import productImage1 from '../assets/shoe1.png';
-import productImage2 from '../assets/shoe2.png';
-import productImage3 from '../assets/shoe3.png';
-import productImage4 from '../assets/shoe4.png';
-import productImage5 from '../assets/shoe5.png';
-import productImage6 from '../assets/shoe6.png';
+import productImage1 from '../assets/protein1.png';
+import productImage2 from '../assets/protein2.png';
+import productImage3 from '../assets/protein3.png';
+import productImage4 from '../assets/protein4.png';
+import productImage5 from '../assets/protein5.png';
+import productImage6 from '../assets/protein6.png';
 
-const Shoe = ({ navigation}) => {
+const Protein = ({ navigation}) => {
   const handleAddToCart = (productName) => {
     console.log(`Added ${productName} to cart`);
   };
@@ -49,8 +49,8 @@ const Shoe = ({ navigation}) => {
           </Pressable>
         </View>
       </View>
-        <View style={{paddingHorizontal:30,paddingTop:27}}>
-            <Text style={{fontSize:20,fontWeight:'bold'}}>SKECHERS</Text>
+        <View style={{paddingHorizontal:30,paddingTop:10}}>
+            <Text style={{fontSize:20,fontWeight:'bold'}}>MuscleBlaze</Text>
             <Text>6 products</Text>
         </View>
       <ScrollView>
@@ -63,7 +63,7 @@ const Shoe = ({ navigation}) => {
               <View>
               <Pressable onPress={() => handlePressImage('Product 1')}>
                 <Image source={productImage1} style={styles.additionalImage} />
-                <Text style={styles.additionalImageText}>SKECHERS  <Text style={{fontSize:12,fontWeight:'normal'}}>Mira Red Lace up in tract</Text></Text>
+                <Text style={styles.additionalImageText}>MuscleBlaze  <Text style={{fontSize:12,fontWeight:'normal'}}>Super Gainer XXL,for muscle</Text></Text>
                 <Text style={styles.amounttext}>$113  <Text style={styles.offertext}>5% Off</Text></Text>
                 
                 </Pressable>
@@ -85,7 +85,7 @@ const Shoe = ({ navigation}) => {
               <View>
               <Pressable onPress={() => handlePressImage('Product 2')}>
               <Image source={productImage2} style={styles.additionalImage} />
-              <Text style={styles.additionalImageText}>SKECHERS  <Text style={{fontSize:12,fontWeight:'normal'}}>Air Cushioning BINSON wihte sneker</Text></Text>
+              <Text style={styles.additionalImageText}>MuscleBlaze  <Text style={{fontSize:12,fontWeight:'normal'}}>Super Gainer XXL,for muscle</Text></Text>
                 <Text style={styles.amounttext}>$103  <Text style={styles.offertext}>5% Off</Text></Text>
                 </Pressable>               
                 </View>
@@ -107,7 +107,7 @@ const Shoe = ({ navigation}) => {
               <View>
               <Pressable onPress={() => handlePressImage('Product 3')}>
                 <Image source={productImage3} style={styles.additionalImage} />
-                <Text style={styles.additionalImageText}>SKECHERS  <Text style={{fontSize:12,fontWeight:'normal'}}>Air Cushioning BINSON wihte sneker</Text></Text>
+                <Text style={styles.additionalImageText}>MuscleBlaze  <Text style={{fontSize:12,fontWeight:'normal'}}>Super Gainer XXL,for muscle</Text></Text>
                 <Text style={styles.amounttext}>$184  <Text style={styles.offertext}>5% Off</Text></Text>
                 </Pressable>
                 </View>
@@ -128,7 +128,7 @@ const Shoe = ({ navigation}) => {
               <View>
               <Pressable onPress={() => handlePressImage('Product 4')}>
                 <Image source={productImage4} style={styles.additionalImage} />
-                <Text style={styles.additionalImageText}>SKECHERS  <Text style={{fontSize:12,fontWeight:'normal'}}>Air Cushioning BINSON wihte sneker</Text></Text>
+                <Text style={styles.additionalImageText}>MuscleBlaze  <Text style={{fontSize:12,fontWeight:'normal'}}>Super Gainer XXL,for muscle</Text></Text>
                 <Text style={styles.amounttext}>$60  <Text style={styles.offertext}>5% Off</Text></Text>
                 </Pressable>
                 </View>
@@ -151,8 +151,8 @@ const Shoe = ({ navigation}) => {
               <View>
               <Pressable onPress={() => handlePressImage('Product 5')}>
                 <Image source={productImage5} style={styles.additionalImage} />
-                <Text style={styles.additionalImageText}>SKECHERS  <Text style={{fontSize:12,fontWeight:'normal'}}>Air Cushioning BINSON wihte sneker</Text></Text>
-                <Text style={styles.amounttext}>$123  <Text style={styles.offertext}>5% Off</Text></Text>
+                <Text style={styles.additionalImageText}>MuscleBlaze  <Text style={{fontSize:12,fontWeight:'normal'}}>Super Gainer XXL,for muscle</Text></Text>
+                <Text style={styles.amounttext}>$89  <Text style={styles.offertext}>5% Off</Text></Text>
                 </Pressable>
                 </View>
                 <View style={styles.addButtonContainer}>
@@ -172,7 +172,7 @@ const Shoe = ({ navigation}) => {
               <View>
               <Pressable onPress={() => handlePressImage('Product 6')}>
                 <Image source={productImage6} style={styles.additionalImage} />
-                <Text style={styles.additionalImageText}>SKECHERS  <Text style={{fontSize:12,fontWeight:'normal'}}>Air Cushioning BINSON wihte sneker</Text></Text>
+                <Text style={styles.additionalImageText}>MuscleBlaze  <Text style={{fontSize:12,fontWeight:'normal'}}>Super Gainer XXL,for muscle</Text></Text>
                 <Text style={styles.amounttext}>$94  <Text style={styles.offertext}>5% Off</Text></Text>
                 </Pressable>
                 </View>
@@ -199,16 +199,17 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
+    backgroundColor: 'rgb(9, 72, 95)',
     justifyContent: 'space-between',
     paddingHorizontal: 20,
-    paddingTop: 8,
+    paddingTop: 2,
     marginTop: 35,
     alignItems: 'center',
-    backgroundColor: 'rgb(9, 72, 95)',
+   
   },
   headerText: {
-    fontSize: 24,
     fontStyle:'italic',
+    fontSize: 24,
     fontWeight: 'bold',
     color: 'white',
     paddingLeft: 20,
@@ -248,7 +249,7 @@ const styles = StyleSheet.create({
 
   amounttext:{
     fontWeight:'bold',
-    paddingVertica:8,
+    paddingVertical:8,
   },
   offertext:{
     color:'green',
@@ -288,4 +289,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Shoe;
+export default Protein;

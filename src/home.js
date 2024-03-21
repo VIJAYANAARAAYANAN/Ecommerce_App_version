@@ -120,12 +120,12 @@ const Home = ({navigation}) => {
             </Pressable>
           </View>
           <View style={styles.row}>
-            <Pressable style={styles.additionalImageWrapper}  onPress={()=> navigation.navigate("beard")}>
+            <Pressable style={styles.additionalImageWrapper}  onPress={()=> navigation.navigate("shoe")}>
               <Image source={productimage5} style={styles.additionalImage} />
               <Text style={styles.additionalImageText}>Upto 40% off</Text>
               <Text style={{color:'white'}}>On Best Seller</Text>
             </Pressable>
-            <Pressable style={styles.additionalImageWrapper}>
+            <Pressable style={styles.additionalImageWrapper} onPress={()=> navigation.navigate("protein")}>
               <Image source={productimage6} style={styles.additionalImage} />
               <Text style={styles.additionalImageText}>Protein</Text>
               <Text style={{color:'white'}}>Upto 20% off</Text>
@@ -135,7 +135,7 @@ const Home = ({navigation}) => {
         <View style={styles.dealTextContainer}>
         <Text style={styles.dealText}>Don't Miss These</Text>
         <Text style={styles.dealText}>Incredible Deals!</Text>
-        <TouchableOpacity style={styles.shopNowButton} onPress={() => alert('Shop Now!')}>
+        <TouchableOpacity style={styles.shopNowButton}>
          <Text style={styles.shopNowText}>SHOP NOW</Text>
         </TouchableOpacity>
         </View>
@@ -159,10 +159,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   headerText: {
-    fontSize: 24,
+    fontSize: 30,
     fontWeight: 'bold',
     color: 'white',
     paddingLeft: 20,
+    fontStyle:'italic'
   },
   iconContainer: {
     flexDirection: 'row',
