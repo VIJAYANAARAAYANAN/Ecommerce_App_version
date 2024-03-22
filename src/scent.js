@@ -32,20 +32,23 @@ const Scent = ({ navigation}) => {
   const handlePressCart = (productName) => {
     console.log(`Cart icon of ${productName} pressed`);
   };
+  const handleSearchPress =(productName)=>{
+    console.log(`Search icon of ${productName} pressed`);
+  }
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>SUGOI</Text>
         <View style={styles.iconContainer}>
-          <Pressable onPress={()=> handleSearchPress()}>
+          <Pressable onPress={()=> handleSearchPress('banner')}>
           <AntDesign name="search1" size={24} color="white" />
           </Pressable>
           <Pressable onPress={() => handlePressHeart('banner')}>
           <AntDesign name="hearto" size={24} color="white" />
           </Pressable>
           <Pressable onPress={() => handlePressCart('banner')}>
-            <Ionicons name="cart-outline" size={24} color="white" />
+            <Ionicons name="cart-outline" size={25} color="white" />
           </Pressable>
         </View>
       </View>
@@ -85,7 +88,7 @@ const Scent = ({ navigation}) => {
               <View>
               <Pressable onPress={() => handlePressImage('Product 2')}>
                 <Image source={productImage2} style={styles.additionalImage} />
-                <Text style={styles.additionalImageText}>Giorgio Armani<Text style={{fontSize:12,fontWeight:'normal'}}>Acqua Di Gio Eau De Toilette</Text></Text>
+                <Text style={styles.additionalImageText}>Giorgio Armani  <Text style={{fontSize:12,fontWeight:'normal'}}>Acqua Di Gio Eau De Toilette</Text></Text>
                 <Text style={styles.amounttext}>$230  <Text style={styles.offertext}>5% Off</Text></Text>
                 </Pressable>               
                 </View>
@@ -107,7 +110,7 @@ const Scent = ({ navigation}) => {
               <View>
               <Pressable onPress={() => handlePressImage('Product 3')}>
                 <Image source={productImage3} style={styles.additionalImage} />
-                <Text style={styles.additionalImageText}>Giorgio Armani<Text style={{fontSize:12,fontWeight:'normal'}}>Acqua Di Gio Eau De Toilette</Text></Text>
+                <Text style={styles.additionalImageText}>Giorgio Armani  <Text style={{fontSize:12,fontWeight:'normal'}}>Acqua Di Gio Eau De Toilette</Text></Text>
                 <Text style={styles.amounttext}>$197  <Text style={styles.offertext}>5% Off</Text></Text>
                 </Pressable>
                 </View>
@@ -128,7 +131,7 @@ const Scent = ({ navigation}) => {
               <View>
               <Pressable onPress={() => handlePressImage('Product 4')}>
                 <Image source={productImage4} style={styles.additionalImage} />
-                <Text style={styles.additionalImageText}>Giorgio Armani<Text style={{fontSize:12,fontWeight:'normal'}}>Acqua Di Gio Eau De Toilette</Text></Text>
+                <Text style={styles.additionalImageText}>Giorgio Armani  <Text style={{fontSize:12,fontWeight:'normal'}}>Acqua Di Gio Eau De Toilette</Text></Text>
                 <Text style={styles.amounttext}>$320  <Text style={styles.offertext}>5% Off</Text></Text>
                 </Pressable>
                 </View>
@@ -151,7 +154,7 @@ const Scent = ({ navigation}) => {
               <View>
               <Pressable onPress={() => handlePressImage('Product 5')}>
                 <Image source={productImage5} style={styles.additionalImage} />
-                <Text style={styles.additionalImageText}>Giorgio Armani<Text style={{fontSize:12,fontWeight:'normal'}}>Acqua Di Gio Eau De Toilette</Text></Text>
+                <Text style={styles.additionalImageText}>Giorgio Armani  <Text style={{fontSize:12,fontWeight:'normal'}}>Acqua Di Gio Eau De Toilette</Text></Text>
                 <Text style={styles.amounttext}>$90  <Text style={styles.offertext}>5% Off</Text></Text>
                 </Pressable>
                 </View>
@@ -172,7 +175,7 @@ const Scent = ({ navigation}) => {
               <View>
               <Pressable onPress={() => handlePressImage('Product 6')}>
                 <Image source={productImage6} style={styles.additionalImage} />
-                <Text style={styles.additionalImageText}>Giorgio Armani<Text style={{fontSize:12,fontWeight:'normal'}}>Acqua Di Gio Eau De Toilette</Text></Text>
+                <Text style={styles.additionalImageText}>Giorgio Armani  <Text style={{fontSize:12,fontWeight:'normal'}}>Acqua Di Gio Eau De Toilette</Text></Text>
                 <Text style={styles.amounttext}>$300  <Text style={styles.offertext}>5% Off</Text></Text>
                 </Pressable>
                 </View>
@@ -248,7 +251,7 @@ const styles = StyleSheet.create({
 
   amounttext:{
     fontWeight:'bold',
-    paddingVertica:8,
+    paddingVertical:8,
   },
   offertext:{
     color:'green',

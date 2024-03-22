@@ -45,8 +45,9 @@ const styles = StyleSheet.create({
   modalText: {
     marginBottom: 40,
     textAlign: 'center',
-    fontSize: 18,
-    
+    fontSize: 20,
+    paddingHorizontal:20,
+  
   },
   button: {
     position: 'absolute',

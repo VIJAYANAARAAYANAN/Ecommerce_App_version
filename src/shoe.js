@@ -45,7 +45,7 @@ const Shoe = ({ navigation}) => {
           <AntDesign name="hearto" size={24} color="white" />
           </Pressable>
           <Pressable onPress={() => handlePressCart('banner')}>
-            <Ionicons name="cart-outline" size={24} color="white" />
+            <Ionicons name="cart-outline" size={26} color="white" />
           </Pressable>
         </View>
       </View>
