@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 20,
     paddingTop: 2,
-    marginTop: 35,
+    marginTop: 25,
     alignItems: 'center',
    
   },
