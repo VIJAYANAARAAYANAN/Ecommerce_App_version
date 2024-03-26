@@ -167,7 +167,6 @@ const Protein = ({ navigation}) => {
          
           </View>
           <View style={styles.column}>
-           
               <View style={styles.additionalImageWrapper}>
               <View>
               <Pressable onPress={() => handlePressImage('Product 6')}>

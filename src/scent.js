@@ -252,10 +252,13 @@ const styles = StyleSheet.create({
   amounttext:{
     fontWeight:'bold',
     paddingVertical:8,
+    fontSize:18,
+    color:'green'
   },
   offertext:{
     color:'green',
     fontWeight:'normal',
+    fontSize:12,
   },
   additionalImage: {
     width: 160,
