@@ -18,6 +18,7 @@ import login from './src/login'
 import register from './src/register'
 import productdetailscreen from './src/productdetailscreen';
 
+import likepro from './src/likepro';
 import cartpro from './src/cartpro';
 
 const Stack = createStackNavigator();
@@ -39,6 +40,7 @@ const App = () => {
           <Stack.Screen name="protein" component={protein} />
           <Stack.Screen name="productdetailscreen" component={productdetailscreen} /> 
           <Stack.Screen name="cartpro" component={cartpro} />
+          <Stack.Screen name="likepro" component={likepro}/>
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

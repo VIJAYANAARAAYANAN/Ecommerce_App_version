@@ -1,193 +1,86 @@
 import React from 'react';
 import { StyleSheet, Text, View, Pressable, Image, ScrollView } from 'react-native';
-import { FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
-
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import fashionData from './data/fashiondata'; // Adjust the path as needed
+import { connect } from 'react-redux';
 import { AntDesign } from '@expo/vector-icons';
-import { EvilIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+import { addToCart } from './actions/cartActions';
 
-import minimilistbanner from '../assets/minimilistbanner.png';
-import productImage1 from '../assets/fashion1.png';
-import productImage2 from '../assets/fashion2.png';
-import productImage3 from '../assets/fashion3.png';
-import productImage4 from '../assets/fashion4.png';
-import productImage5 from '../assets/fashion5.png';
-import productImage6 from '../assets/fashion6.png';
-
-const Scent = ({ navigation}) => {
-  const handleAddToCart = (productName) => {
-    console.log(`Added ${productName} to cart`);
+const Fashion = ({ navigation , dispatch }) => {
+  const handleAddToCart = (scentproduct) => {
+    console.log(scentproduct)
+    dispatch(addToCart(scentproduct));
+    navigation.navigate('cartpro')
   };
 
   const handlePressImage = (productName) => {
     console.log(`Image of ${productName} pressed`);
   };
 
-  const handlePressHeart = (productName) => {
-    console.log(`Heart icon of ${productName} pressed`);
-  };
-  
-  const handleLikePress =(productName) => {
+  const handleLikePress = (productName) => {
     console.log(`Like icon of ${productName} pressed`);
-  }
-  const handlePressCart = (productName) => {
-    console.log(`Cart icon of ${productName} pressed`);
   };
+
+  const handlePressCart =() => {
+    navigation.navigate('cartpro')
+  }
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>SUGOI</Text>
         <View style={styles.iconContainer}>
-          <Pressable onPress={()=> handleSearchPress()}>
-          <AntDesign name="search1" size={24} color="white" />
+          <Pressable onPress={() => handleSearchPress('banner')}>
+            <AntDesign name="search1" size={24} color="white" />
           </Pressable>
           <Pressable onPress={() => handlePressHeart('banner')}>
-          <AntDesign name="hearto" size={24} color="white" />
+            <AntDesign name="hearto" size={24} color="white" />
           </Pressable>
-          <Pressable onPress={() => handlePressCart('banner')}>
-            <Ionicons name="cart-outline" size={24} color="white" />
+          <Pressable onPress={() => handlePressCart()}>
+            <Ionicons name="cart-outline" size={25} color="white" />
           </Pressable>
         </View>
       </View>
-        <View style={{paddingHorizontal:30,paddingTop:27}}>
-            <Text style={{fontSize:20,fontWeight:'bold'}}>The Souled Store</Text>
-            <Text>6 products</Text>
-        </View>
+      <View style={{ paddingHorizontal: 30, paddingTop: 27 }}>
+        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Giorgio Amani</Text>
+        <Text>{fashionData.length} products</Text>
+      </View>
       <ScrollView>
-      {/* Additional images section */}
-      <View style={styles.additionalImagesContainer}>
-        <View style={styles.row}>
-          <View style={styles.column}>
-            
-              <View style={styles.additionalImageWrapper}>
-              <View>
-              <Pressable onPress={() => handlePressImage('Product 1')}>
-                <Image source={productImage1} style={styles.additionalImage} />
-                <Text style={styles.additionalImageText}>The Souled Store <Text style={{fontSize:12,fontWeight:'normal'}}>checked almond cream</Text></Text>
-                <Text style={styles.amounttext}>$70  <Text style={styles.offertext}>5% Off</Text></Text>
-                
-                </Pressable>
+        {/* Additional images section */}
+        <View style={styles.additionalImagesContainer}>
+          {fashionData.reduce((rows, fashionproduct, index) => {
+            if (index % 2 === 0) {
+              rows.push([fashionproduct]);
+            } else {
+              rows[rows.length - 1].push(fashionproduct);
+            }
+            return rows;
+          }, []).map((row, rowIndex) => (
+            <View key={rowIndex} style={styles.row}>
+              {row.map((fashionproduct, columnIndex) => (
+                <View key={columnIndex} style={styles.column}>
+                  <View style={styles.additionalImageWrapper}>
+                    <Pressable onPress={() => handlePressImage(fashionproduct.name)}>
+                      <Image source={fashionproduct.image} style={styles.additionalImage} />
+                      <Text numberOfLines={2} style={styles.additionalImageText}>{fashionproduct.name}</Text>
+                      <Text style={styles.amounttext}>${fashionproduct.price.toFixed(0)} <Text style={styles.offertext}>  5% Off</Text></Text>
+                     
+                    </Pressable>
+                    <View style={styles.addButtonContainer}>
+                      <Pressable onPress={() => handleLikePress(fashionproduct.name)}>
+                        <MaterialCommunityIcons name="heart-plus-outline" size={24} color="black" />
+                      </Pressable>
+                      <Pressable style={styles.addButton} onPress={() => handleAddToCart(fashionproduct.id)}>
+                        <Text style={styles.addButtonText}>Add to Cart</Text>
+                      </Pressable>
+                    </View>
+                  </View>
                 </View>
-                <View style={styles.addButtonContainer}>
-                <Pressable onPress={()=> handleLikePress('Product 1')}>
-                  <MaterialCommunityIcons name="heart-plus-outline" size={24} color="black" />
-                  </Pressable>
-                  <Pressable style={styles.addButton} onPress={() => handleAddToCart('Product 1')}>
-                    <Text style={styles.addButtonText}>Add to Cart</Text>
-                  </Pressable>
-                </View>
-              </View>
-            
-          </View>
-          <View style={styles.column}>
-           
-              <View style={styles.additionalImageWrapper}>
-              <View>
-              <Pressable onPress={() => handlePressImage('Product 2')}>
-              <Image source={productImage2} style={styles.additionalImage} />
-                <Text style={styles.additionalImageText}>The Souled Store <Text style={{fontSize:12,fontWeight:'normal'}}>Official Dungeons</Text></Text>
-                <Text style={styles.amounttext}>$95  <Text style={styles.offertext}>5% Off</Text></Text>
-                </Pressable>               
-                </View>
-                <View style={styles.addButtonContainer}>
-                <Pressable onPress={()=> handleLikePress('Product 2')}>
-                  <MaterialCommunityIcons name="heart-plus-outline" size={24} color="black" />
-                  </Pressable>
-                  <Pressable style={styles.addButton} onPress={() => handleAddToCart('Product 2')}>
-                    <Text style={styles.addButtonText}>Add to Cart</Text>
-                  </Pressable>
-                </View>
-              </View>
-            
-          </View>
+              ))}
+            </View>
+          ))}
         </View>
-        <View style={styles.row}>
-          <View style={styles.column}>
-              <View style={styles.additionalImageWrapper}>
-              <View>
-              <Pressable onPress={() => handlePressImage('Product 3')}>
-                <Image source={productImage3} style={styles.additionalImage} />
-                <Text style={styles.additionalImageText}>The Souled Store  <Text style={{fontSize:12,fontWeight:'normal'}}>Ant man Kang</Text></Text>
-                <Text style={styles.amounttext}>$65  <Text style={styles.offertext}>5% Off</Text></Text>
-                </Pressable>
-                </View>
-                <View style={styles.addButtonContainer}>
-                <Pressable onPress={()=> handleLikePress('Product 3')}>
-                  <MaterialCommunityIcons name="heart-plus-outline" size={24} color="black" />
-                  </Pressable>
-                  <Pressable style={styles.addButton} onPress={() => handleAddToCart('Product 3')}>
-                    <Text style={styles.addButtonText}>Add to Cart</Text>
-                  </Pressable>
-                </View>
-              </View>
-           
-          </View>
-          <View style={styles.column}>
-           
-              <View style={styles.additionalImageWrapper}>
-              <View>
-              <Pressable onPress={() => handlePressImage('Product 4')}>
-                <Image source={productImage4} style={styles.additionalImage} />
-                <Text style={styles.additionalImageText}>The Souled Store  <Text style={{fontSize:12,fontWeight:'normal'}}>Ant man Kang</Text></Text>
-                <Text style={styles.amounttext}>$81  <Text style={styles.offertext}>5% Off</Text></Text>
-                </Pressable>
-                </View>
-                <View style={styles.addButtonContainer}>
-                <Pressable onPress={()=> handleLikePress('Product 4')}>
-                  <MaterialCommunityIcons name="heart-plus-outline" size={24} color="black" />
-                  </Pressable>
-                  <Pressable style={styles.addButton} onPress={() => handleAddToCart('Product 4')}>
-                    <Text style={styles.addButtonText}>Add to Cart</Text>
-                  </Pressable>
-                </View>
-              </View>
-            
-          </View>
-        </View>
-        <View style={styles.row}>
-          <View style={styles.column}>
-           
-              <View style={styles.additionalImageWrapper}>
-              <View>
-              <Pressable onPress={() => handlePressImage('Product 5')}>
-                <Image source={productImage5} style={styles.additionalImage} />
-                <Text style={styles.additionalImageText}>The Souled Store  <Text style={{fontSize:12,fontWeight:'normal'}}>Ant man Kang</Text></Text>
-                <Text style={styles.amounttext}>$54  <Text style={styles.offertext}>5% Off</Text></Text>
-                </Pressable>
-                </View>
-                <View style={styles.addButtonContainer}>
-                <Pressable onPress={()=> handleLikePress('Product 5')}>
-                  <MaterialCommunityIcons name="heart-plus-outline" size={24} color="black" />
-                  </Pressable>
-                  <Pressable style={styles.addButton} onPress={() => handleAddToCart('Product 5')}>
-                    <Text style={styles.addButtonText}>Add to Cart</Text>
-                  </Pressable>
-                </View>
-              </View>
-         
-          </View>
-          <View style={styles.column}>
-           
-              <View style={styles.additionalImageWrapper}>
-              <View>
-              <Pressable onPress={() => handlePressImage('Product 6')}>
-                <Image source={productImage6} style={styles.additionalImage} />
-                <Text style={styles.additionalImageText}>The Souled Store  <Text style={{fontSize:12,fontWeight:'normal'}}>Ant man Kang</Text></Text>
-                <Text style={styles.amounttext}>$93  <Text style={styles.offertext}>5% Off</Text></Text>
-                </Pressable>
-                </View>
-                <View style={styles.addButtonContainer}>
-                <Pressable onPress={()=> handleLikePress('Product 6')}>
-                  <MaterialCommunityIcons name="heart-plus-outline" size={24} color="black" />
-                  </Pressable>
-                  <Pressable style={styles.addButton} onPress={() => handleAddToCart('Product 6')}>
-                    <Text style={styles.addButtonText}>Add to Cart</Text>
-                  </Pressable>
-                </View>
-              </View>
-          </View>
-        </View>
-      </View>
       </ScrollView>
     </View>
   );
@@ -247,11 +140,15 @@ const styles = StyleSheet.create({
   },
 
   amounttext:{
-    fontWeight:'bold',
-    paddingVertica:8,
+    fontWeight:'bold',fontWeight: '600',
+    color:'green',
+    fontSize:18,
+    paddingVertical:8,
   },
   offertext:{
-    color:'green',
+    color:'black',
+    fontWeight:'500',
+    fontSize:15,
     fontWeight:'normal',
   },
   additionalImage: {
@@ -265,12 +162,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 5,
     textAlign: 'left',
+    paddingBottom:5,
     
   },
   addButtonContainer: {
+
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 5,
+    marginTop: 10,
     marginBottom: 10,
     gap: 20,
   },
@@ -288,4 +187,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Scent;
+export default connect()(Fashion);

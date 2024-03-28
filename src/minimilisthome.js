@@ -1,26 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Pressable, Image, ScrollView } from 'react-native';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import { Fontisto } from '@expo/vector-icons';
 
+import { useNavigation } from '@react-navigation/native';
 import { connect } from 'react-redux';
 import { addToCart } from './actions/cartActions';
+import { removeFromWishlist, addToWishlist } from './actions/likeActions'; 
 
 import minimilistbanner from '../assets/minimilistbanner.png';
 import productData from './data/minidata'; 
 
-const Minimilisthome = ({ dispatch ,navigation}) => {
+const Minimilisthome = ({ dispatch, navigation }) => {
+  const [isLiked, setIsLiked] = useState({}); 
+
   const handleAddToCart = (product) => {
     console.log(product)
     dispatch(addToCart(product));
     navigation.navigate('cartpro')
   };
 
-  const handleLikePress = (productName) => {
-    console.log(`Like icon of ${productName} pressed`);
+  const handleLikePress = (productId) => {
+    setIsLiked(prevState => ({
+      ...prevState,
+      [productId]: !prevState[productId], 
+    }));
+
+    if (isLiked[productId]) {
+      dispatch(removeFromWishlist(productId));
+    } else {
+      dispatch(addToWishlist(productId));
+      navigation.navigate('likepro')
+    }
   };
 
   const handlePressImage = (productId) => {
@@ -33,7 +47,7 @@ const Minimilisthome = ({ dispatch ,navigation}) => {
   };
 
   const handlePressHeart = () => {
-    console.log('Banner like icon pressed');
+    navigation.navigate('likepro');
   }
 
   const handleSearchPress = () => {
@@ -85,8 +99,12 @@ const Minimilisthome = ({ dispatch ,navigation}) => {
                       <Text style={{ color: 'green', paddingVertical: 3 }}>Enjoy free gifts!</Text>
                     </Pressable>
                     <View style={styles.addButtonContainer}>
-                      <Pressable onPress={() => handleLikePress(product.name)}>
-                        <MaterialCommunityIcons name="heart-plus-outline" size={24} color="black" />
+                      <Pressable onPress={() => handleLikePress(product.id)}>
+                        {isLiked[product.id] ? (
+                          <Fontisto name="heart" size={18} color="red" />
+                        ) : (
+                          <MaterialCommunityIcons name="heart-plus-outline" size={24} color="black" />
+                        )}
                       </Pressable>
                       <Pressable style={styles.addButton} onPress={() => handleAddToCart(product.id)}>
                         <Text style={styles.addButtonText}>Add to Cart</Text>
@@ -102,6 +120,7 @@ const Minimilisthome = ({ dispatch ,navigation}) => {
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {

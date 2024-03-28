@@ -30,7 +30,7 @@ console.log('cartItems:', cartItems);
           </View>
         ))}
       </ScrollView>
-      <View> </View>
+
     </View>
   );
 };
@@ -47,22 +47,26 @@ const styles = StyleSheet.create({
   heading: {
     fontSize:27,
     fontWeight: 'bold',
-    marginBottom: 17,
-    paddingTop:20,
-    width:"100%"
+    marginBottom: 20,
+    paddingTop:30,
+    width:"100%",
+    paddingHorizontal:9
   },
   item: {
     backgroundColor:'white',
     flexDirection: 'row',
     marginBottom: 20,
     borderRadius:5,
+    
   },
   image: {
+    marginTop:10,
     width: 130,
     height: 130,
     borderRadius: 10,
     marginRight: 10,
-    marginBottom:16,
+    marginBottom:23,
+    bottom:-5,
   },
   details: {
     flex: 1,
@@ -70,7 +74,7 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 16,
     marginBottom: 5,
-
+    marginTop:15,
   },
   price: {
     fontSize: 16,
@@ -88,7 +92,7 @@ const styles = StyleSheet.create({
     backgroundColor:'green',
     width:85,
     position:'relative',
-    right:-115,
+    right:-110,
     borderRadius:10,
   },
 

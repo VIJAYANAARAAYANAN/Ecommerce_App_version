@@ -4,20 +4,16 @@ import { FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icon
 
 import { AntDesign } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
+import beardData from './data/bearddata';
+import { connect } from 'react-redux';
+import { addToCart } from './actions/cartActions';
 
-import minimilistbanner from '../assets/minimilistbanner.png';
-import productImage1 from '../assets/beard1.png';
-import productImage2 from '../assets/beard2.png';
-import productImage3 from '../assets/beard3.png';
-import productImage4 from '../assets/beard4.png';
-import productImage5 from '../assets/beard5.png';
-import productImage6 from '../assets/beard6.png';
-
-const Beard = ({ navigation}) => {
-  const handleAddToCart = (productName) => {
-    console.log(`Added ${productName} to cart`);
+const Beard = ({ navigation,dispatch}) => {
+  const handleAddToCart = (beardproduct) => {
+    console.log(beardproduct)
+    dispatch(addToCart(beardproduct));
+    navigation.navigate('cartpro')
   };
-
   const handlePressImage = (productName) => {
     console.log(`Image of ${productName} pressed`);
   };
@@ -30,7 +26,7 @@ const Beard = ({ navigation}) => {
     console.log(`Like icon of ${productName} pressed`);
   }
   const handlePressCart = (productName) => {
-    console.log(`Cart icon of ${productName} pressed`);
+    navigation.navigate('cartpro')
   };
 
   return (
@@ -53,141 +49,41 @@ const Beard = ({ navigation}) => {
             <Text style={{fontSize:20,fontWeight:'bold'}}>Beardo</Text>
             <Text>6 products</Text>
         </View>
-      <ScrollView>
-      {/* Additional images section */}
-      <View style={styles.additionalImagesContainer}>
-        <View style={styles.row}>
-          <View style={styles.column}>
-            
-              <View style={styles.additionalImageWrapper}>
-              <View>
-              <Pressable onPress={() => handlePressImage('Product 1')}>
-                <Image source={productImage1} style={styles.additionalImage} />
-                <Text style={styles.additionalImageText}>Beardo  <Text style={{fontSize:12,fontWeight:'normal'}}>Whisky smoke Bourbon</Text></Text>
-                <Text style={styles.amounttext}>$113  <Text style={styles.offertext}>5% Off</Text></Text>
-                
-                </Pressable>
+        <ScrollView>
+        {/* Additional images section */}
+        <View style={styles.additionalImagesContainer}>
+          {beardData.reduce((rows, beardproduct, index) => {
+            if (index % 2 === 0) {
+              rows.push([beardproduct]);
+            } else {
+              rows[rows.length - 1].push(beardproduct);
+            }
+            return rows;
+          }, []).map((row, rowIndex) => (
+            <View key={rowIndex} style={styles.row}>
+              {row.map((beardproduct, columnIndex) => (
+                <View key={columnIndex} style={styles.column}>
+                  <View style={styles.additionalImageWrapper}>
+                    <Pressable onPress={() => handlePressImage(beardproduct.name)}>
+                      <Image source={beardproduct.image} style={styles.additionalImage} />
+                      <Text numberOfLines={2} style={styles.additionalImageText}>{beardproduct.name}</Text>
+                      <Text style={styles.amounttext}>$ {beardproduct.price.toFixed(0)} <Text style={styles.offertext}>  5% Off</Text></Text>
+                     
+                    </Pressable>
+                    <View style={styles.addButtonContainer}>
+                      <Pressable onPress={() => handleLikePress(product.name)}>
+                        <MaterialCommunityIcons name="heart-plus-outline" size={24} color="black" />
+                      </Pressable>
+                      <Pressable style={styles.addButton} onPress={() => handleAddToCart(beardproduct.id)}>
+                        <Text style={styles.addButtonText}>Add to Cart</Text>
+                      </Pressable>
+                    </View>
+                  </View>
                 </View>
-                <View style={styles.addButtonContainer}>
-                <Pressable onPress={()=> handleLikePress('Product 1')}>
-                  <MaterialCommunityIcons name="heart-plus-outline" size={24} color="black" />
-                  </Pressable>
-                  <Pressable style={styles.addButton} onPress={() => handleAddToCart('Product 1')}>
-                    <Text style={styles.addButtonText}>Add to Cart</Text>
-                  </Pressable>
-                </View>
-              </View>
-            
-          </View>
-          <View style={styles.column}>
-           
-              <View style={styles.additionalImageWrapper}>
-              <View>
-              <Pressable onPress={() => handlePressImage('Product 2')}>
-              <Image source={productImage2} style={styles.additionalImage} />
-              <Text style={styles.additionalImageText}>Beardo  <Text style={{fontSize:12,fontWeight:'normal'}}>Smoky Whisky for men</Text></Text>
-                <Text style={styles.amounttext}>$92  <Text style={styles.offertext}>5% Off</Text></Text>
-                </Pressable>               
-                </View>
-                <View style={styles.addButtonContainer}>
-                <Pressable onPress={()=> handleLikePress('Product 2')}>
-                  <MaterialCommunityIcons name="heart-plus-outline" size={24} color="black" />
-                  </Pressable>
-                  <Pressable style={styles.addButton} onPress={() => handleAddToCart('Product 2')}>
-                    <Text style={styles.addButtonText}>Add to Cart</Text>
-                  </Pressable>
-                </View>
-              </View>
-            
-          </View>
+              ))}
+            </View>
+          ))}
         </View>
-        <View style={styles.row}>
-          <View style={styles.column}>
-              <View style={styles.additionalImageWrapper}>
-              <View>
-              <Pressable onPress={() => handlePressImage('Product 3')}>
-                <Image source={productImage3} style={styles.additionalImage} />
-                <Text style={styles.additionalImageText}>Beardo  <Text style={{fontSize:12,fontWeight:'normal'}}>The Red GOD Father</Text></Text>
-                <Text style={styles.amounttext}>$65  <Text style={styles.offertext}>5% Off</Text></Text>
-                </Pressable>
-                </View>
-                <View style={styles.addButtonContainer}>
-                <Pressable onPress={()=> handleLikePress('Product 3')}>
-                  <MaterialCommunityIcons name="heart-plus-outline" size={24} color="black" />
-                  </Pressable>
-                  <Pressable style={styles.addButton} onPress={() => handleAddToCart('Product 3')}>
-                    <Text style={styles.addButtonText}>Add to Cart</Text>
-                  </Pressable>
-                </View>
-              </View>
-           
-          </View>
-          <View style={styles.column}>
-           
-              <View style={styles.additionalImageWrapper}>
-              <View>
-              <Pressable onPress={() => handlePressImage('Product 4')}>
-                <Image source={productImage4} style={styles.additionalImage} />
-                <Text style={styles.additionalImageText}>Beardo  <Text style={{fontSize:12,fontWeight:'normal'}}>Incredible Trimmer for men</Text></Text>
-                <Text style={styles.amounttext}>$113  <Text style={styles.offertext}>5% Off</Text></Text>
-                </Pressable>
-                </View>
-                <View style={styles.addButtonContainer}>
-                <Pressable onPress={()=> handleLikePress('Product 4')}>
-                  <MaterialCommunityIcons name="heart-plus-outline" size={24} color="black" />
-                  </Pressable>
-                  <Pressable style={styles.addButton} onPress={() => handleAddToCart('Product 4')}>
-                    <Text style={styles.addButtonText}>Add to Cart</Text>
-                  </Pressable>
-                </View>
-              </View>
-            
-          </View>
-        </View>
-        <View style={styles.row}>
-          <View style={styles.column}>
-           
-              <View style={styles.additionalImageWrapper}>
-              <View>
-              <Pressable onPress={() => handlePressImage('Product 5')}>
-                <Image source={productImage5} style={styles.additionalImage} />
-                <Text style={styles.additionalImageText}>Beardo  <Text style={{fontSize:12,fontWeight:'normal'}}>Blacky Whisky Smoke</Text></Text>
-                <Text style={styles.amounttext}>$54  <Text style={styles.offertext}>5% Off</Text></Text>
-                </Pressable>
-                </View>
-                <View style={styles.addButtonContainer}>
-                <Pressable onPress={()=> handleLikePress('Product 5')}>
-                  <MaterialCommunityIcons name="heart-plus-outline" size={24} color="black" />
-                  </Pressable>
-                  <Pressable style={styles.addButton} onPress={() => handleAddToCart('Product 5')}>
-                    <Text style={styles.addButtonText}>Add to Cart</Text>
-                  </Pressable>
-                </View>
-              </View>
-         
-          </View>
-          <View style={styles.column}>
-           
-              <View style={styles.additionalImageWrapper}>
-              <View>
-              <Pressable onPress={() => handlePressImage('Product 6')}>
-                <Image source={productImage6} style={styles.additionalImage} />
-                <Text style={styles.additionalImageText}>Beardo  <Text style={{fontSize:12,fontWeight:'normal'}}>The wax Beard Massager for men</Text></Text>
-                <Text style={styles.amounttext}>$93  <Text style={styles.offertext}>5% Off</Text></Text>
-                </Pressable>
-                </View>
-                <View style={styles.addButtonContainer}>
-                <Pressable onPress={()=> handleLikePress('Product 6')}>
-                  <MaterialCommunityIcons name="heart-plus-outline" size={24} color="black" />
-                  </Pressable>
-                  <Pressable style={styles.addButton} onPress={() => handleAddToCart('Product 6')}>
-                    <Text style={styles.addButtonText}>Add to Cart</Text>
-                  </Pressable>
-                </View>
-              </View>
-          </View>
-        </View>
-      </View>
       </ScrollView>
     </View>
   );
@@ -288,4 +184,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Beard;
+export default connect()(Beard);

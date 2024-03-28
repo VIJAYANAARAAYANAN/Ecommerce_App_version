@@ -26,7 +26,7 @@ export default function Login({ navigation }) {
     try {
       await validationSchema.validate({ firstname, lastname, email, password }, { abortEarly: false });
   
-      const response = await axios.post('http://192.168.100.198:5000/register', {
+      const response = await axios.post('http:///172.16.127.247:5000/register', {
         firstname,
         lastname,
         email,
@@ -35,6 +35,7 @@ export default function Login({ navigation }) {
       
       console.log(response.data);
       setShowAlert(true); 
+      
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
         const errorMessage = error.errors.join('\n');

@@ -4,6 +4,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+import 'react-native-gesture-handler';
 
 import banner from '../assets/bann.png';
 import image1 from '../assets/Luxe.png';
@@ -242,7 +243,7 @@ const styles = StyleSheet.create({
   additionalImage: {
     width: '100%',
     padding:10,
-    height: 250, // Adjust as needed
+    height: 250,
     borderRadius: 10,
     marginBottom: 2,
   },
@@ -250,8 +251,8 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize:18,
     fontWeight: 'bold',
-    marginTop: 5, // Add some space between image and text
-    textAlign: 'center', // Center the text
+    marginTop: 5,
+    textAlign: 'center', 
   },
   dealTextContainer: {
     marginTop: 20,

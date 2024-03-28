@@ -5,17 +5,15 @@ import { FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icon
 import { AntDesign } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
 
-import minimilistbanner from '../assets/minimilistbanner.png';
-import productImage1 from '../assets/protein1.png';
-import productImage2 from '../assets/protein2.png';
-import productImage3 from '../assets/protein3.png';
-import productImage4 from '../assets/protein4.png';
-import productImage5 from '../assets/protein5.png';
-import productImage6 from '../assets/protein6.png';
+import proteinData from './data/proteindata';
+import { connect } from 'react-redux';
+import { addToCart } from './actions/cartActions';
 
-const Protein = ({ navigation}) => {
-  const handleAddToCart = (productName) => {
-    console.log(`Added ${productName} to cart`);
+const Protein = ({ navigation,dispatch }) => {
+  const handleAddToCart = (proteinproduct) => {
+    console.log(proteinproduct)
+    dispatch(addToCart(proteinproduct));
+    navigation.navigate('cartpro')
   };
 
   const handlePressImage = (productName) => {
@@ -53,140 +51,41 @@ const Protein = ({ navigation}) => {
             <Text style={{fontSize:20,fontWeight:'bold'}}>MuscleBlaze</Text>
             <Text>6 products</Text>
         </View>
-      <ScrollView>
-      {/* Additional images section */}
-      <View style={styles.additionalImagesContainer}>
-        <View style={styles.row}>
-          <View style={styles.column}>
-            
-              <View style={styles.additionalImageWrapper}>
-              <View>
-              <Pressable onPress={() => handlePressImage('Product 1')}>
-                <Image source={productImage1} style={styles.additionalImage} />
-                <Text style={styles.additionalImageText}>MuscleBlaze  <Text style={{fontSize:12,fontWeight:'normal'}}>Super Gainer XXL,for muscle</Text></Text>
-                <Text style={styles.amounttext}>$113  <Text style={styles.offertext}>5% Off</Text></Text>
-                
-                </Pressable>
+        <ScrollView>
+        {/* Additional images section */}
+        <View style={styles.additionalImagesContainer}>
+          {proteinData.reduce((rows, proteinproduct, index) => {
+            if (index % 2 === 0) {
+              rows.push([proteinproduct]);
+            } else {
+              rows[rows.length - 1].push(proteinproduct);
+            }
+            return rows;
+          }, []).map((row, rowIndex) => (
+            <View key={rowIndex} style={styles.row}>
+              {row.map((proteinproduct, columnIndex) => (
+                <View key={columnIndex} style={styles.column}>
+                  <View style={styles.additionalImageWrapper}>
+                    <Pressable onPress={() => handlePressImage(proteinproduct.name)}>
+                      <Image source={proteinproduct.image} style={styles.additionalImage} />
+                      <Text numberOfLines={2} style={styles.additionalImageText}>{proteinproduct.name}</Text>
+                      <Text style={styles.amounttext}>$ {proteinproduct.price.toFixed(0)} <Text style={styles.offertext}>  5% Off</Text></Text>
+                     
+                    </Pressable>
+                    <View style={styles.addButtonContainer}>
+                      <Pressable onPress={() => handleLikePress(proteinproduct.name)}>
+                        <MaterialCommunityIcons name="heart-plus-outline" size={24} color="black" />
+                      </Pressable>
+                      <Pressable style={styles.addButton} onPress={() => handleAddToCart(proteinproduct.id)}>
+                        <Text style={styles.addButtonText}>Add to Cart</Text>
+                      </Pressable>
+                    </View>
+                  </View>
                 </View>
-                <View style={styles.addButtonContainer}>
-                <Pressable onPress={()=> handleLikePress('Product 1')}>
-                  <MaterialCommunityIcons name="heart-plus-outline" size={24} color="black" />
-                  </Pressable>
-                  <Pressable style={styles.addButton} onPress={() => handleAddToCart('Product 1')}>
-                    <Text style={styles.addButtonText}>Add to Cart</Text>
-                  </Pressable>
-                </View>
-              </View>
-            
-          </View>
-          <View style={styles.column}>
-           
-              <View style={styles.additionalImageWrapper}>
-              <View>
-              <Pressable onPress={() => handlePressImage('Product 2')}>
-              <Image source={productImage2} style={styles.additionalImage} />
-              <Text style={styles.additionalImageText}>MuscleBlaze  <Text style={{fontSize:12,fontWeight:'normal'}}>Super Gainer XXL,for muscle</Text></Text>
-                <Text style={styles.amounttext}>$103  <Text style={styles.offertext}>5% Off</Text></Text>
-                </Pressable>               
-                </View>
-                <View style={styles.addButtonContainer}>
-                <Pressable onPress={()=> handleLikePress('Product 2')}>
-                  <MaterialCommunityIcons name="heart-plus-outline" size={24} color="black" />
-                  </Pressable>
-                  <Pressable style={styles.addButton} onPress={() => handleAddToCart('Product 2')}>
-                    <Text style={styles.addButtonText}>Add to Cart</Text>
-                  </Pressable>
-                </View>
-              </View>
-            
-          </View>
+              ))}
+            </View>
+          ))}
         </View>
-        <View style={styles.row}>
-          <View style={styles.column}>
-              <View style={styles.additionalImageWrapper}>
-              <View>
-              <Pressable onPress={() => handlePressImage('Product 3')}>
-                <Image source={productImage3} style={styles.additionalImage} />
-                <Text style={styles.additionalImageText}>MuscleBlaze  <Text style={{fontSize:12,fontWeight:'normal'}}>Super Gainer XXL,for muscle</Text></Text>
-                <Text style={styles.amounttext}>$184  <Text style={styles.offertext}>5% Off</Text></Text>
-                </Pressable>
-                </View>
-                <View style={styles.addButtonContainer}>
-                <Pressable onPress={()=> handleLikePress('Product 3')}>
-                  <MaterialCommunityIcons name="heart-plus-outline" size={24} color="black" />
-                  </Pressable>
-                  <Pressable style={styles.addButton} onPress={() => handleAddToCart('Product 3')}>
-                    <Text style={styles.addButtonText}>Add to Cart</Text>
-                  </Pressable>
-                </View>
-              </View>
-           
-          </View>
-          <View style={styles.column}>
-           
-              <View style={styles.additionalImageWrapper}>
-              <View>
-              <Pressable onPress={() => handlePressImage('Product 4')}>
-                <Image source={productImage4} style={styles.additionalImage} />
-                <Text style={styles.additionalImageText}>MuscleBlaze  <Text style={{fontSize:12,fontWeight:'normal'}}>Super Gainer XXL,for muscle</Text></Text>
-                <Text style={styles.amounttext}>$60  <Text style={styles.offertext}>5% Off</Text></Text>
-                </Pressable>
-                </View>
-                <View style={styles.addButtonContainer}>
-                <Pressable onPress={()=> handleLikePress('Product 4')}>
-                  <MaterialCommunityIcons name="heart-plus-outline" size={24} color="black" />
-                  </Pressable>
-                  <Pressable style={styles.addButton} onPress={() => handleAddToCart('Product 4')}>
-                    <Text style={styles.addButtonText}>Add to Cart</Text>
-                  </Pressable>
-                </View>
-              </View>
-            
-          </View>
-        </View>
-        <View style={styles.row}>
-          <View style={styles.column}>
-           
-              <View style={styles.additionalImageWrapper}>
-              <View>
-              <Pressable onPress={() => handlePressImage('Product 5')}>
-                <Image source={productImage5} style={styles.additionalImage} />
-                <Text style={styles.additionalImageText}>MuscleBlaze  <Text style={{fontSize:12,fontWeight:'normal'}}>Super Gainer XXL,for muscle</Text></Text>
-                <Text style={styles.amounttext}>$89  <Text style={styles.offertext}>5% Off</Text></Text>
-                </Pressable>
-                </View>
-                <View style={styles.addButtonContainer}>
-                <Pressable onPress={()=> handleLikePress('Product 5')}>
-                  <MaterialCommunityIcons name="heart-plus-outline" size={24} color="black" />
-                  </Pressable>
-                  <Pressable style={styles.addButton} onPress={() => handleAddToCart('Product 5')}>
-                    <Text style={styles.addButtonText}>Add to Cart</Text>
-                  </Pressable>
-                </View>
-              </View>
-         
-          </View>
-          <View style={styles.column}>
-              <View style={styles.additionalImageWrapper}>
-              <View>
-              <Pressable onPress={() => handlePressImage('Product 6')}>
-                <Image source={productImage6} style={styles.additionalImage} />
-                <Text style={styles.additionalImageText}>MuscleBlaze  <Text style={{fontSize:12,fontWeight:'normal'}}>Super Gainer XXL,for muscle</Text></Text>
-                <Text style={styles.amounttext}>$94  <Text style={styles.offertext}>5% Off</Text></Text>
-                </Pressable>
-                </View>
-                <View style={styles.addButtonContainer}>
-                <Pressable onPress={()=> handleLikePress('Product 6')}>
-                  <MaterialCommunityIcons name="heart-plus-outline" size={24} color="black" />
-                  </Pressable>
-                  <Pressable style={styles.addButton} onPress={() => handleAddToCart('Product 6')}>
-                    <Text style={styles.addButtonText}>Add to Cart</Text>
-                  </Pressable>
-                </View>
-              </View>
-          </View>
-        </View>
-      </View>
       </ScrollView>
     </View>
   );
@@ -288,4 +187,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Protein;
+export default connect()(Protein);

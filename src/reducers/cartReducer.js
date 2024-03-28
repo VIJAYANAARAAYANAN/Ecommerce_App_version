@@ -1,6 +1,5 @@
 // reducers/cartReducer.js
-import productData from '../data/minidata'; // Import product data
-
+import productData from '../data/wholedata'; // Import product data
 const initialState = {
   cartItems: [],
 };
@@ -22,7 +21,6 @@ const cartReducer = (state = initialState, action) => {
         };
       } else {
         console.log('Product is not in the cart.');
-        // If the product is not in the cart, add it with quantity 1
         const productToAdd = productData.find(product => product.id === action.payload.id);
         if (productToAdd) {
           return {
@@ -34,7 +32,7 @@ const cartReducer = (state = initialState, action) => {
           return state; 
         }
       }
-
+      
     case 'REMOVE_FROM_CART':
       return {
         ...state,
