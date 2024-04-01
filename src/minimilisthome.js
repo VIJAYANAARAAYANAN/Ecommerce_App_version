@@ -99,13 +99,15 @@ const Minimilisthome = ({ dispatch, navigation }) => {
                       <Text style={{ color: 'green', paddingVertical: 3 }}>Enjoy free gifts!</Text>
                     </Pressable>
                     <View style={styles.addButtonContainer}>
+                    <View style={styles.likebotn}>
                       <Pressable onPress={() => handleLikePress(product.id)}>
                         {isLiked[product.id] ? (
-                          <Fontisto name="heart" size={18} color="red" />
+                          <Fontisto name="heart" size={18} color="#013220" />
                         ) : (
                           <MaterialCommunityIcons name="heart-plus-outline" size={24} color="black" />
                         )}
                       </Pressable>
+                      </View>
                       <Pressable style={styles.addButton} onPress={() => handleAddToCart(product.id)}>
                         <Text style={styles.addButtonText}>Add to Cart</Text>
                       </Pressable>
@@ -135,6 +137,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'rgb(9, 72, 95)',
   },
+  likebotn:{
+
+    
+  },
+
   headerText: {
     fontSize: 24,
     fontWeight: 'bold',
