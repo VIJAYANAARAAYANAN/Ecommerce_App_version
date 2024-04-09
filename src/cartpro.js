@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
 
   remove:{
     color:'white',
-    fontSize:17,
+    fontSize:15,
     paddingHorizontal:10,
     paddingVertical:5,
     fontWeight:"700"
