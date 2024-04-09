@@ -174,6 +174,7 @@ const styles = StyleSheet.create({
   addButtonText: {
     color: 'white',
     fontWeight: 'bold',
+    fontSize:13,
   },
 });
 

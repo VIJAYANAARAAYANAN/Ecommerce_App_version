@@ -6,6 +6,7 @@ const shoeData = [
       description: 'Mira Red Lace up in tract',
       price: 113,
     },
+
     {
       id: 24,
       name: 'SKECHERS Air Cushioning BINSON wihte sneker',
@@ -13,6 +14,7 @@ const shoeData = [
       description: 'Air Cushioning BINSON wihte sneker',
       price: 103,
     },
+
     {
       id: 25,
       name: 'SKECHERS Air Cushioning BINSON grey sneker',
@@ -20,6 +22,7 @@ const shoeData = [
       description: 'Air Cushioning BINSON wihte sneker',
       price: 184,
     },
+
     {
       id: 26,
       name: 'SKECHERS Air Crushing green white sneker',
@@ -27,6 +30,7 @@ const shoeData = [
       description: 'Air Cushioning BINSON wihte sneker',
       price: 60,
     },
+
     {
       id: 27,
       name: 'SKECHERS Air Red Dragon brute sneker',
@@ -34,6 +38,7 @@ const shoeData = [
       description: 'Air Cushioning BINSON wihte sneker',
       price: 123,
     },
+
     {
       id: 28,
       name: 'SKECHERS Air Black and White sneker',
@@ -41,6 +46,7 @@ const shoeData = [
       description: 'Air Cushioning BINSON wihte sneker',
       price: 94,
     },
+    
   ];
   
   export default shoeData;

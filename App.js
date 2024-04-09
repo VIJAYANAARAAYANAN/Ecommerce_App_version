@@ -17,7 +17,6 @@ import protein  from './src/protein';
 import login from './src/login'
 import register from './src/register'
 import productdetailscreen from './src/productdetailscreen';
-
 import likepro from './src/likepro';
 import cartpro from './src/cartpro';
 

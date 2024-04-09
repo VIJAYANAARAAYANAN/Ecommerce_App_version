@@ -22,6 +22,7 @@ const registrationSchema = new mongoose.Schema({
   email: String,
   password: String,
 });
+
 const Registered = mongoose.model('Registered', registrationSchema);
 
 //registration

@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 30,
-    fontWeight: 'bold',
+    fontWeight: '400',
     color: 'white',
     paddingLeft: 20,
     fontStyle:'italic'

@@ -19,7 +19,7 @@ export default function Login({ navigation }) {
     try {
       await validationSchema.validate({ email, password }, { abortEarly: false });
 
-      const response = await fetch('http://172.17.19.69:5000/login', {
+      const response = await fetch('http://172.16.127.101:5000/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

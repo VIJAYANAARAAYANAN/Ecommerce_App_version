@@ -143,8 +143,9 @@ const styles = StyleSheet.create({
   },
 
   amounttext:{
-    fontWeight:'bold',
+    fontWeight:'600',
     paddingVertica:8,
+
   },
   offertext:{
     color:'green',
@@ -181,6 +182,7 @@ const styles = StyleSheet.create({
   addButtonText: {
     color: 'white',
     fontWeight: 'bold',
+    fontSize:13,
   },
 });
 

@@ -5,7 +5,7 @@ const CustomAlert = ({ visible, message, onClose, navigation }) => {
   const handleOK = () => {
     onClose();
     if (navigation) {
-      navigation.navigate("home"); 
+      navigation.navigate("home");
     }
   };
 

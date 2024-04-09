@@ -1,22 +1,21 @@
-
+// likeReducer.js
+import { ADD_TO_WISHLIST, REMOVE_FROM_WISHLIST } from '../actions/likeActionTypes';
 import productData from '../data/wholedata';
 
 const initialState = {
   likeItems: [],
 };
 
-const LikeReducer = (state = initialState, action) => {
-  console.log('Action received by LikeReducer:', action);
+const likeReducer = (state = initialState, action) => {
   switch (action.type) {
-
-    case 'ADD_TO_WISHLIST': {
-      const existingIndex = state.likeItems.findIndex(item => item.id === action.payload.id);
+    case ADD_TO_WISHLIST: {
+      const existingIndex = state.likeItems.findIndex(item => item.id === action.payload);
       if (existingIndex !== -1) {
         console.log('Product is already in the wishlist.');
         return state;
       } else {
         console.log('Adding product to wishlist.');
-        const productToAdd = productData.find(product => product.id === action.payload.id);
+        const productToAdd = productData.find(product => product.id === action.payload);
         if (productToAdd) {
           return {
             ...state,
@@ -29,10 +28,10 @@ const LikeReducer = (state = initialState, action) => {
       }
     }
 
-    case 'REMOVE_FROM_WISHLIST' : {
+    case REMOVE_FROM_WISHLIST: {
       return {
         ...state,
-        likeItems: state.likeItems.filter(item => item.id !== action.payload.id),
+        likeItems: state.likeItems.filter(item => item.id !== action.payload),
       };
     }
 
@@ -41,4 +40,4 @@ const LikeReducer = (state = initialState, action) => {
   }
 };
 
-export default LikeReducer;
+export default likeReducer;

@@ -1,18 +1,16 @@
-//likeAction.js
-import * as types from './likeActionTypes';
+// likeActions.js
+import * as types from '../actions/likeActionTypes';
 
 export const addToWishlist = (productId) => {
-    console.log('Dispatching action from likeAction.js:', { type: types.ADD_TO_WISHLIST, payload: { id: productId } });
-    return {
-      type: types.ADD_TO_WISHLIST,
-      payload: { id: productId },
-    };
+  return {
+    type: types.ADD_TO_WISHLIST,
+    payload: productId,
   };
+};
 
 export const removeFromWishlist = (productId) => {
-    console.log('Triggered action from likeAction.js:',{ type: types.REMOVE_FROM_WISHLIST,payload : { id :productId }});
-    return {
+  return {
     type: types.REMOVE_FROM_WISHLIST,
-    payload: { id: productId },
-    };
+    payload: productId,
   };
+};

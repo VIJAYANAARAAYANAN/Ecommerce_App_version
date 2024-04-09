@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, FlatList, Image, StyleSheet, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
+import { Fontisto } from '@expo/vector-icons';
 
 const { width } = Dimensions.get('window');
 const itemWidth = (width - 40) / 2 - 10; // Calculate item width for two items per row
@@ -18,8 +19,11 @@ const LikePro = ({ likeItems }) => {
           renderItem={({ item }) => (
             <View style={styles.itemContainer}>
               <Image source={item.image} style={styles.image} />
-              <Text style={styles.name}>{item.name}</Text>
+              <Text  numberOfLines={2} style={styles.name}>{item.name}</Text>
+              <View style={styles.likeprice}>
               <Text style={styles.price}>${item.price.toFixed(2)}</Text>
+              <Fontisto name="heart" size={18} color="#013220" />
+              </View>
             </View>
           )}
         />
@@ -73,13 +77,21 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   price: {
-    fontSize: 14,
-    color: 'green',
+    fontSize: 16,
+    color: 'rgb(9, 72, 95)',
     marginTop: 3,
+    fontWeight:'bold',
+    paddingVertical:5,
   },
   emptyMessage: {
     fontSize: 16,
     textAlign: 'center',
     marginTop: 20,
+  },
+  likeprice:{
+    display:'flex',
+    flexDirection:'row',
+    alignItems:'flex-end'
+    
   },
 });

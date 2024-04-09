@@ -139,12 +139,11 @@ const styles = StyleSheet.create({
   },
   likebotn:{
 
-    
-  },
 
+  },
   headerText: {
-    fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: '400',
+    fontSize: 30,
     color: 'white',
     paddingLeft: 20,
     paddingVertical:20,
@@ -215,6 +214,7 @@ const styles = StyleSheet.create({
   addButtonText: {
     color: 'white',
     fontWeight: 'bold',
+    fontSize:13,
   },
 });
 
