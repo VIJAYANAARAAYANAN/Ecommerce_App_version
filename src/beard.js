@@ -144,7 +144,8 @@ const styles = StyleSheet.create({
 
   amounttext:{
     fontWeight:'600',
-    paddingVertica:8,
+    paddingVertical:2,
+    fontSize:15,
 
   },
   offertext:{
@@ -159,7 +160,6 @@ const styles = StyleSheet.create({
   },
   additionalImageText: {
     color: 'black',
-    fontWeight: 'bold',
     marginTop: 5,
     textAlign: 'left',
     

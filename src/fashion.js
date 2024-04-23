@@ -140,15 +140,15 @@ const styles = StyleSheet.create({
   },
 
   amounttext:{
-    fontWeight:'bold',fontWeight: '600',
+    fontWeight: '500',
     color:'green',
-    fontSize:18,
-    paddingVertical:8,
+    fontSize:16,
+    paddingVertical:0,
   },
   offertext:{
     color:'black',
     fontWeight:'500',
-    fontSize:15,
+    fontSize:13,
     fontWeight:'normal',
   },
   additionalImage: {
@@ -159,14 +159,12 @@ const styles = StyleSheet.create({
   },
   additionalImageText: {
     color: 'black',
-    fontWeight: 'bold',
     marginTop: 5,
     textAlign: 'left',
     paddingBottom:5,
     
   },
   addButtonContainer: {
-
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 10,

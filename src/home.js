@@ -141,6 +141,29 @@ const Home = ({navigation}) => {
         </TouchableOpacity>
         </View>
         </ScrollView>
+
+
+
+
+        <View style={styles.bottomNavigation}>
+        <TouchableOpacity style={styles.bottomNavItem} onPress={()=> navigation.navigate('home')}>
+          <Ionicons name="home" size={24} color="white" />
+          <Text style={styles.bottomNavText}>Home</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.bottomNavItem} onPress={()=> navigation.navigate('offer')}>
+          <AntDesign name="tagso" size={24} color="white" />
+          <Text style={styles.bottomNavText}>Offers</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.bottomNavItem} onPress={()=> navigation.navigate('categories')}>
+          <FontAwesome name="list-alt" size={24} color="white" />
+          <Text style={styles.bottomNavText}>Categories</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.bottomNavItem} onPress={()=> navigation.navigate('account')}>
+          <FontAwesome name="user" size={24} color="white" />
+          <Text style={styles.bottomNavText}>Account</Text>
+        </TouchableOpacity>
+      </View>
+    
     </View>
    
   );
@@ -276,6 +299,23 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  bottomNavigation: {
+    flexDirection: 'row',
+    justifyContent:'space-evenly',
+    alignItems: 'center',
+    backgroundColor: 'rgb(9, 72, 95)',
+    paddingVertical: 5,
+    borderRadius:100,
+    borderBottomLeftRadius: 50, 
+    borderBottomRightRadius: 50, 
+  },
+  bottomNavItem: {
+    alignItems: 'center',
+  },
+  bottomNavText: {
+    color: 'white',
+    marginTop: 5,
   },
 });
 

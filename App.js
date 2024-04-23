@@ -19,6 +19,9 @@ import register from './src/register'
 import productdetailscreen from './src/productdetailscreen';
 import likepro from './src/likepro';
 import cartpro from './src/cartpro';
+import account from './src/account';
+import categories from './src/categories';
+import Offer from './src/offer';
 
 const Stack = createStackNavigator();
 
@@ -40,6 +43,9 @@ const App = () => {
           <Stack.Screen name="productdetailscreen" component={productdetailscreen} /> 
           <Stack.Screen name="cartpro" component={cartpro} />
           <Stack.Screen name="likepro" component={likepro}/>
+          <Stack.Screen name="offer" component={Offer}/>
+          <Stack.Screen name="categories" component={categories}/>
+          <Stack.Screen name="account" component={account}/>
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

@@ -2,9 +2,13 @@ import React from 'react';
 import { View, Text, FlatList, Image, StyleSheet, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import { Fontisto } from '@expo/vector-icons';
-
+import { removeFromWishlist } from './actions/likeActions';
+const handlelikeicon=(item) =>{
+     console.log('likeiconpressed')
+  removeFromWishlist(item)
+}
 const { width } = Dimensions.get('window');
-const itemWidth = (width - 40) / 2 - 10; // Calculate item width for two items per row
+const itemWidth = (width - 40) / 2 - 10;
 
 const LikePro = ({ likeItems }) => {
   const renderLikeItems = () => {
@@ -22,7 +26,7 @@ const LikePro = ({ likeItems }) => {
               <Text  numberOfLines={2} style={styles.name}>{item.name}</Text>
               <View style={styles.likeprice}>
               <Text style={styles.price}>${item.price.toFixed(2)}</Text>
-              <Fontisto name="heart" size={18} color="#013220" />
+              <Fontisto style={styles.likfont} name="heart" size={18} color="#013220" onPress={handlelikeicon} />
               </View>
             </View>
           )}
@@ -58,6 +62,9 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: '500',
     marginBottom: 5,
+    color:'rgb(9, 72, 95)',
+    textDecorationLine:'underline',
+    paddingBottom:30,
   },
   columnWrapper: {
     justifyContent: 'space-between',
@@ -77,11 +84,11 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   price: {
-    fontSize: 16,
-    color: 'rgb(9, 72, 95)',
+    fontSize: 14,
+    color:"green",
     marginTop: 3,
-    fontWeight:'bold',
-    paddingVertical:5,
+    paddingRight:20,
+    paddingVertical:0,
   },
   emptyMessage: {
     fontSize: 16,
@@ -91,7 +98,13 @@ const styles = StyleSheet.create({
   likeprice:{
     display:'flex',
     flexDirection:'row',
-    alignItems:'flex-end'
-    
+    alignContent: 'flex-start',
+    justifyContent: 'space-between',
+  },
+  likefont:{
+    top:0,
+    bottom:50,
+
   },
 });
+

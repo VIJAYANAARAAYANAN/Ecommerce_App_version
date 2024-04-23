@@ -26,7 +26,7 @@ export default function Login({ navigation }) {
     try {
       await validationSchema.validate({ firstname, lastname, email, password }, { abortEarly: false });
   
-      const response = await axios.post('http:///172.16.127.247:5000/register', {
+      const response = await axios.post('http:///172.16.127.101:5000/register', {
         firstname,
         lastname,
         email,
