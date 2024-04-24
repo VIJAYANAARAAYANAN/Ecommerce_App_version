@@ -184,10 +184,12 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 30,
-    fontWeight: '400',
+    fontWeight: '700',
     color: 'white',
     paddingLeft: 20,
-    fontStyle:'italic'
+    textShadowColor:'white',
+    textShadowOffset:{width: 1, height: 2},
+    textShadowRadius:3,
   },
   iconContainer: {
     flexDirection: 'row',
@@ -306,7 +308,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'rgb(9, 72, 95)',
     paddingVertical: 5,
-    borderRadius:100,
     borderBottomLeftRadius: 50, 
     borderBottomRightRadius: 50, 
   },

@@ -8,7 +8,7 @@ const scentData = [
   },
   {
     id: 6,
-    name: 'Chanel Bleu de Chanel Parfum',
+    name: 'Chanel Bleu de pal Chanel Parfum',
     description: "Chanel Bleu de Chanel Parfum is a timeless fragrance that embodies elegance and refinement. Its blend of citrus, cedar, and sandalwood creates a harmonious symphony that lingers on the skin all day long. Ideal for the discerning gentleman who appreciates classic sophistication.",
     image: require('../../assets/scent2.png'),
     price: 230,

@@ -3,10 +3,10 @@
 const productData = [
     {
       id: 1,
-      name: 'Minimilist skin care routine for oily and acne face',
-      description: 'Achieve clear, radiant skin with our minimilist skin care routine specially designed for oily and acne-prone faces. This comprehensive regimen targets excess oil production, unclogs pores, and reduces acne breakouts without stripping your skin of its natural moisture. Formulated with gentle yet effective ingredients like salicylic acid and tea tree oil, this routine helps control sebum production and soothes inflammation, leaving your skin feeling refreshed and rejuvenated. Say goodbye to stubborn blemishes and hello to a smoother, more balanced complexion with our minimilist skin care routine.',
-      price: 120.30,
-      image: require('../../assets/minipro1.png') 
+      name: 'Minimilist skin care normal routine',
+      description: 'Discover the beauty of simplicity with our minimilist skin care normal routine, designed to nourish and protect your skin without unnecessary complexity. Formulated with gentle yet effective ingredients, this routine caters to the unique needs of normal skin, maintaining its natural balance and radiance. From cleansers to moisturizers, each product is thoughtfully crafted to deliver optimal results without overwhelming your skin. Experience the pure essence of skin care with our minimilist skin care normal routine.',
+      price: 185.20,
+      image: require('../../assets/minipro4.png') 
     },
     {
       id: 2,
@@ -24,12 +24,13 @@ const productData = [
     },
     {
       id: 4,
-      name: 'Minimilist skin care normal routine',
-      description: 'Discover the beauty of simplicity with our minimilist skin care normal routine, designed to nourish and protect your skin without unnecessary complexity. Formulated with gentle yet effective ingredients, this routine caters to the unique needs of normal skin, maintaining its natural balance and radiance. From cleansers to moisturizers, each product is thoughtfully crafted to deliver optimal results without overwhelming your skin. Experience the pure essence of skin care with our minimilist skin care normal routine.',
-      price: 185.20,
-      image: require('../../assets/minipro4.png') 
+      name: 'Minimilist skin care routine for oily and acne face',
+      description: 'Achieve clear, radiant skin with our minimilist skin care routine specially designed for oily and acne-prone faces. This comprehensive regimen targets excess oil production, unclogs pores, and reduces acne breakouts without stripping your skin of its natural moisture. Formulated with gentle yet effective ingredients like salicylic acid and tea tree oil, this routine helps control sebum production and soothes inflammation, leaving your skin feeling refreshed and rejuvenated. Say goodbye to stubborn blemishes and hello to a smoother, more balanced complexion with our minimilist skin care routine.',
+      price: 120.30,
+      image: require('../../assets/minipro1.png') 
     },
   ];
   
   export default productData;
   
+      

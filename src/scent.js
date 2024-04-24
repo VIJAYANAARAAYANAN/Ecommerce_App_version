@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, Pressable, Image, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Pressable, Image, ScrollView,TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign , FontAwesome } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
 import { addToCart } from './actions/cartActions';
@@ -87,6 +87,24 @@ const Scent = ({ navigation, dispatch }) => {
           ))}
         </View>
       </ScrollView>
+      <View style={styles.bottomNavigation}>
+          <TouchableOpacity style={styles.bottomNavItem} onPress={()=> navigation.navigate('home')}>
+            <Ionicons name="home" size={24} color="white" />
+            <Text style={styles.bottomNavText}>Home</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.bottomNavItem} onPress={()=> navigation.navigate('offer')}>
+            <AntDesign name="tagso" size={24} color="white" />
+            <Text style={styles.bottomNavText}>Offers</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.bottomNavItem} onPress={()=> navigation.navigate('categories')}>
+            <FontAwesome name="list-alt" size={24} color="white" />
+            <Text style={styles.bottomNavText}>Categories</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.bottomNavItem} onPress={()=> navigation.navigate('account')}>
+            <FontAwesome name="user" size={24} color="white" />
+            <Text style={styles.bottomNavText}>Account</Text>
+          </TouchableOpacity>
+        </View>
     </View>
   );
 };
@@ -94,6 +112,7 @@ const Scent = ({ navigation, dispatch }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingBottom:40,
   },
   header: {
     flexDirection: 'row',
@@ -133,15 +152,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   amounttext: {
-    fontWeight: '600',
-    paddingVertical: 8,
-    fontSize: 18,
+    fontWeight: '500',
+    paddingVertical: 2,
+    fontSize: 17,
     color: 'green'
   },
   offertext: {
     color: 'black',
     fontWeight: '800',
-    fontSize: 15,
+    fontSize: 13,
     fontWeight:'500'
   },
   additionalImage: {
@@ -175,6 +194,26 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     fontSize:13,
+  },
+  bottomNavigation: {
+    position:'absolute',
+    bottom:0,
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    backgroundColor: 'rgb(9, 72, 95)',
+    paddingVertical: 5,
+    borderRadius: 100,
+    borderBottomLeftRadius: 20, 
+    borderBottomRightRadius: 20, 
+  },
+  bottomNavItem: {
+    alignItems: 'center',
+  },
+  bottomNavText: {
+    color: 'white',
+    marginTop: 5,
   },
 });
 

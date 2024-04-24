@@ -12,7 +12,7 @@ const SplashScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-    <View style={{borderColor:'white',borderWidth:5}}>
+    <View style={{borderColor:'white',borderWidth:5,borderRadius:20,}}>
       <Text style={styles.text}>SUGOI</Text>
     </View> 
     </View>

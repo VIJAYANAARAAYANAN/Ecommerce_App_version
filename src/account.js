@@ -5,6 +5,9 @@ import { Feather } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
+import { EvilIcons } from '@expo/vector-icons';
+
 
 const Account = ({ navigation}) => {
     return (
@@ -14,6 +17,7 @@ const Account = ({ navigation}) => {
           <Text style={styles.headname}>Vijay</Text>
           <Text style={styles.mail}>Logged in via vijaybalaram05@gmail.com</Text>
         </View>
+        <ScrollView>
         {/* Your content */}
         <View style={styles.list}>
 
@@ -42,7 +46,7 @@ const Account = ({ navigation}) => {
             <Text style={styles.title}>Coupons</Text>
             <Text style={styles.descrip}>Browse coupoun to get discounts</Text>
             </View>
-            <MaterialIcons name="delivery-dining" size={29} color="black" />
+            <Entypo name="ticket" size={24} color="black" />
         </View>
         </TouchableOpacity>
 
@@ -52,11 +56,61 @@ const Account = ({ navigation}) => {
             <Text style={styles.title}>Wishlist</Text>
             <Text style={styles.descrip}>Buy from items saved in wishlist</Text>
             </View>
-            <MaterialIcons name="delivery-dining" size={29} color="black" />
+            <AntDesign name="hearto" size={24} color="black" />
         </View>
         </TouchableOpacity>
-
+        <TouchableOpacity>
+        <View style={styles.rowContainer}>
+            <View style={styles.textContainer}>
+            <Text style={styles.title}>Help & Customer Support</Text>
+            <Text style={styles.descrip}>Get help for your orders</Text>
+            </View>
+            <Entypo name="help" size={23} color="black" />
         </View>
+        </TouchableOpacity>
+        <TouchableOpacity>
+        <View style={styles.rowContainer}>
+            <View style={styles.textContainer}>
+            <Text style={styles.title}>Addresses</Text>
+            <Text style={styles.descrip}>Manage your saved address</Text>
+            </View>
+            <FontAwesome name="address-book-o" size={24} color="black" />
+        </View>
+        </TouchableOpacity>
+        <TouchableOpacity>
+        <View style={styles.rowContainer}>
+            <View style={styles.textContainer}>
+            <Text style={styles.title}>Payment Methods</Text>
+            <Text style={styles.descrip}>Manage your saved payment methods</Text>
+            </View>
+            <MaterialIcons name="payment" size={24} color="black" />
+        </View>
+        </TouchableOpacity>
+        <TouchableOpacity>
+        <View style={styles.rowContainer}>
+            <View style={styles.textContainer}>
+            <Text style={styles.title}>Profile</Text>
+            <Text style={styles.descrip}>Manage your profile information</Text>
+            </View>
+            <AntDesign name="user" size={24} color="black" />
+        </View>
+        </TouchableOpacity>
+        
+        </View>
+        <View style={styles.endview}>
+        <View>
+          <Text style={styles.logoText}>Sugoi</Text>
+          <Text style={{textAlign:'center',fontSize:11,color:'darkgrey'}}>Version 1.0</Text>
+        </View>
+        <View style={{display:'flex',justifyContent:'center'}}>
+        <TouchableOpacity style={styles.logoutButton} onPress={()=> navigation.navigate('login')}>
+          <Text style={styles.logoutButtonText}>Logout</Text>
+        </TouchableOpacity>
+        </View>
+      </View>
+
+        </ScrollView>
+
         {/* Bottom navigation */}
         <View style={styles.bottomNavigation}>
           <TouchableOpacity style={styles.bottomNavItem} onPress={()=> navigation.navigate('home')}>
@@ -123,8 +177,7 @@ const Account = ({ navigation}) => {
     flex: 1,
   },
   title: {
-    fontSize: 18,
-    fontWeight: '500',
+    fontSize: 16,
     marginBottom: 5,
     paddingTop:5,
   },
@@ -132,6 +185,39 @@ const Account = ({ navigation}) => {
     fontSize: 12,
     color: 'gray',
     paddingBottom:5,
+  },
+  endview: {
+    display:"flex",
+    borderTopWidth: 1,
+    borderTopColor: 'white',
+    backgroundColor:'#36454F',
+    paddingVertical: 20,
+    alignContent:'center',
+    textAlign:'center',
+    height:250,
+  },
+  logoText: {
+    paddingTop:15,
+    textAlign: 'center',
+    color: '#fff',
+    fontSize: 30,
+    fontWeight: 'bold',
+  },
+  logoutButton: {
+    borderWidth: 1,
+    borderColor: 'white',
+    width: '90%',
+    alignItems:'center',
+    alignSelf:'center',
+    borderRadius:20,
+    marginTop: 20,
+  },
+  logoutButtonText: {
+    textAlign: 'center',
+    paddingTop: 10,
+    paddingBottom: 10,
+    color: 'white',
+    fontSize: 18,
   },
     bottomNavigation: {
       position:'absolute',

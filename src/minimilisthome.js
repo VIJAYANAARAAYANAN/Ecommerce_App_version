@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Pressable, Image, ScrollView } from 'react-native';
-
+import { StyleSheet, Text, View, Pressable, Image, ScrollView ,TouchableOpacity} from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
@@ -78,7 +78,7 @@ const Minimilisthome = ({ dispatch, navigation }) => {
         <Text>{productData.length} products</Text>
       </View>
 
-      <ScrollView>
+      <ScrollView contentContainerStyle={styles.scrollViewContent}>
         <View style={styles.additionalImagesContainer}>
           {productData.reduce((rows, product, index) => {
             if (index % 2 === 0) {
@@ -119,6 +119,24 @@ const Minimilisthome = ({ dispatch, navigation }) => {
           ))}
         </View>
       </ScrollView>
+      <View style={styles.bottomNavigation}>
+          <TouchableOpacity style={styles.bottomNavItem} onPress={()=> navigation.navigate('home')}>
+            <Ionicons name="home" size={24} color="white" />
+            <Text style={styles.bottomNavText}>Home</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.bottomNavItem} onPress={()=> navigation.navigate('offer')}>
+            <AntDesign name="tagso" size={24} color="white" />
+            <Text style={styles.bottomNavText}>Offers</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.bottomNavItem} onPress={()=> navigation.navigate('categories')}>
+            <FontAwesome name="list-alt" size={24} color="white" />
+            <Text style={styles.bottomNavText}>Categories</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.bottomNavItem} onPress={()=> navigation.navigate('account')}>
+            <FontAwesome name="user" size={24} color="white" />
+            <Text style={styles.bottomNavText}>Account</Text>
+          </TouchableOpacity>
+        </View>
     </View>
   );
 };
@@ -127,6 +145,7 @@ const Minimilisthome = ({ dispatch, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingBottom:40,
   },
   header: {
     flexDirection: 'row',
@@ -142,12 +161,14 @@ const styles = StyleSheet.create({
 
   },
   headerText: {
-    fontWeight: '400',
+    fontWeight: '500',
     fontSize: 30,
     color: 'white',
     paddingLeft: 20,
     paddingVertical:20,
-    fontStyle:'italic',
+    textShadowColor:'white',
+    textShadowOffset:{width: 2, height: 3},
+    textShadowRadius:4,
   },
   iconContainer: {
     flexDirection: 'row',
@@ -215,6 +236,29 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     fontSize:13,
+  },
+  scrollViewContent:{
+    marginBottom:50,
+  },
+  bottomNavigation: {
+    position:'absolute',
+    bottom:0,
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    backgroundColor: 'rgb(9, 72, 95)',
+    paddingVertical: 5,
+    borderRadius: 100,
+    borderBottomLeftRadius: 20, 
+    borderBottomRightRadius: 20, 
+  },
+  bottomNavItem: {
+    alignItems: 'center',
+  },
+  bottomNavText: {
+    color: 'white',
+    marginTop: 5,
   },
 });
 
